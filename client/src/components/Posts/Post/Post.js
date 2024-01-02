@@ -1,4 +1,4 @@
-import { Button, Card, CardActions, CardContent, CardMedia, Typography, ButtonBase } from "@mui/material";
+import { Button, Card, CardActions, CardContent, CardMedia, Typography, ButtonBase, Box } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
@@ -77,7 +77,9 @@ const Post = ({ post }) => {
                     title={post.title} 
             />
 
-            <ButtonBase color="yellow" name="test" className={classes.cardAction} component="span" onClick={handleClick}>
+            <ButtonBase className={classes.cardAction} component="span" onClick={handleClick}
+             >
+                <Box /* sx={{px: '1px'}} */>
                 <div className={classes.overlay}>
                     <Typography variant="h6">{post.creator}</Typography>
                     <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography> 
@@ -98,6 +100,7 @@ const Post = ({ post }) => {
                         {post.message.split(' ').splice(0, 20).join(' ')}...
                     </Typography>
                 </CardContent>
+                </Box>
             </ButtonBase>
 
             { user &&

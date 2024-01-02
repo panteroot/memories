@@ -21,8 +21,10 @@ const Form = () => {
 
     useEffect(() => {  
         const loadPost = async() => {
-            const result = await getPost(currentId);
-            setPostData(result);
+            if(currentId){
+                const result = await getPost(currentId);
+                setPostData(result);
+            }    
         }
         
         loadPost();   

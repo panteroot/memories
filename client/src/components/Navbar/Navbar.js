@@ -24,9 +24,8 @@ const Navbar = () => {
                 dispatch({ type: 'LOGOUT' });
                 localStorage.removeItem('user');
                 console.log('token expired!');
+                navigate("/");
             }
-        }else{
-            navigate("/");
         }
 
 
@@ -48,7 +47,7 @@ const Navbar = () => {
                     user?
                     (
                         <div className={classes.profile}>
-                            <Avatar className={classes.purple} alt="" src={user.data.picture}>
+                            <Avatar className={classes.purple} alt="" src={user?.data.picture}>
                                 { user?.data.firstname.charAt(0) }
                             </Avatar>
                             <Typography className={classes.userName} variant="h6">Hi there &nbsp;   <b>{user?.data.firstname}</b> ! </Typography>
