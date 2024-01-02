@@ -1,0 +1,4 @@
+2024-01-02
+This is a MERN stack app that is based on youtube tutorial by "Javascript Mastery" (https://www.youtube.com/watch?v=ngc9gnGgUdA). If following the videos and existing repo alone while aiming to use the latest react version, packages can't run since it requires React v17 to run the Material UI v5 alone. With this, sourcecode was modified to use React Context API, MUI v5, Google OAuth2 and other latest libraries to run with React 18.
+
+The tutorial originally used redux. This version uses react context api but reduxjs toolkit (reducers, thunks) were also added and is ready to be used with maybe a bit changes.
