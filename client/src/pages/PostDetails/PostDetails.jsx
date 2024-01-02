@@ -11,7 +11,7 @@ const PostDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const url = `http://localhost:5000/posts/${id}`;
+  const url = `https://memories-h9eg.onrender.com/posts/${id}`;
   const fetcher = (url) => fetch(url).then((res) => res.json());
 
   const { data: post, error, isLoading } = useSWR(url, fetcher);

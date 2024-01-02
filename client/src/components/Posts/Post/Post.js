@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import useStyles from "./styles";
 import { usePostContext } from "../../../useContext/usePostContext";
 import { useAuthContext } from "../../../useContext/useAuthContext";
-import { deletePost, likePost, getPost } from "../../../actions/actionPost";
+import { deletePost, likePost } from "../../../actions/actionPost";
 
 const Post = ({ post }) => {
     const classes = useStyles();

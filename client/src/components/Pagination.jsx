@@ -8,7 +8,7 @@ import { getPosts } from "../actions/actionPost";
 
 const Paginate = ({ page }) => {
     const classes = useStyles();
-    const { posts, numberOfPages, dispatch } = usePostContext();
+    const { numberOfPages, dispatch } = usePostContext();
 
     useEffect(() => {
         const loadPosts = async() => {

@@ -33,7 +33,6 @@ const Home = () => {
 
     const handleSearchPost = async() => {
         if(searchTerm.trim() || tags.length > 0){
-            const result = await getPostsBySearch({ search: searchTerm, tags: tags.join(',') });
             navigate(`/posts/search?searchQuery=${searchTerm || 'none'}&tags=${tags.join(',')}`);
         }else{
             navigate("/");
