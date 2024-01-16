@@ -3,23 +3,18 @@ import { deepPurple } from '@mui/material/colors';
 import { useTheme } from "@mui/material/styles";
 
 export default makeStyles(() => ({
-  appBar: { 
-    // borderRadius: 15,
-    // margin: '30px 0',
+  appBar: {
+    borderRadius: 15,
+    margin: '30px 0',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    // padding: '10px 50px',
+    padding: '10px 50px',
     [useTheme().breakpoints.down('sm')]: {
       flexDirection: 'column',
     },
   },
-  // toolbar: {
-  //   height: '100%',
-  //   width: '100% !important',
-  // },
-  // toolbar: useTheme().mixins.toolbar,
   heading: {
     color: useTheme().palette.primary.main,
     textDecoration: 'none',
@@ -30,14 +25,14 @@ export default makeStyles(() => ({
     marginLeft: '10px',
     marginTop: '5px',
   },
-  // toolbar: {
-  //   display: 'flex',
-  //   justifyContent: 'flex-end',
-  //   width: '400px',
-  //   [useTheme().breakpoints.down('sm')]: {
-  //     width: 'auto',
-  //   },
-  // },
+  toolbar: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    width: '400px',
+    [useTheme().breakpoints.down('sm')]: {
+      width: 'auto',
+    },
+  },
   profile: {
     display: 'flex',
     justifyContent: 'space-between',

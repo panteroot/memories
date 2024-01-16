@@ -76,7 +76,7 @@ const Auth = ({user, setUser}) => {
 
 
     return (
-        <Container component="main" maxWidth="xs">
+        <Container component="main" maxWidth="xs" style={{ paddingTop: `calc(2% + 70px)` }}>
             <Paper className={classes.paper} elevation={3}>
                 <Typography>{!isSignup? 'Signin' : 'Signup'}</Typography>
                 {error && <p style={{ color: "red", font: "bold" }}>{error}</p>}

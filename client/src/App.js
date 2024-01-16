@@ -18,7 +18,7 @@ function App() {
 
   return (
     <GoogleOAuthProvider clientId={process.env.REACT_APP_CLIENTID}>
-      <Container maxWidth="lg">
+      <Container maxWidth="false">
         <BrowserRouter>
           <Navbar />
           <Routes>

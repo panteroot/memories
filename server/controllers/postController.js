@@ -4,7 +4,7 @@ import Post from "../models/postModels.js";
 export const getPosts = async(req, res) => {
     try {
         const { page } = req.query;
-        const LIMIT = 2;
+        const LIMIT = 8;
         const startIndex = (Number(page) - 1) * LIMIT; //starting index per page
         const total = await Post.countDocuments();
         

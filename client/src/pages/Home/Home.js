@@ -54,13 +54,16 @@ const Home = () => {
     if(!posts) return null;
 
     return (
-        <Grow in>
-            <Container maxWidth="xl">
+
+        // <div style={{ paddingTop: `calc(2% + 70px)` }} >
+        
+            <Container maxWidth="false" style={{ paddingTop: `calc(2% + 70px)` }}>
+                <Grow in>
                 <Grid container justify="space-between" alignItems="stretch" spacing={3} className={classes.gridContainer}>
-                    <Grid item xs={12} sm={6} md={8}>
+                    <Grid item xs={12} sm={6} md={9}>
                         <Posts />
                     </Grid>
-                    <Grid item xs={12} sm={6} md={4}>
+                    <Grid item xs={12} sm={6} md={3}>
                         <Paper className={classes.paper} elevation={6}>
                             <TextField 
                                 name="search"
@@ -101,8 +104,11 @@ const Home = () => {
                         )}
                     </Grid>
                 </Grid>
+                </Grow>
             </Container>
-        </Grow>
+        
+        // </div>
+
     )
 }
 

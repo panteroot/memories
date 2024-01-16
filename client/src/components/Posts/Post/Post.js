@@ -59,7 +59,7 @@ const Post = ({ post }) => {
     }
 
     const handleClick = () => {
-        navigate(`/posts/${post._id}`);
+        navigate(`/posts/${post._id}`, { state: post});
     }
 
     const handleClickForEdit = (e) => {

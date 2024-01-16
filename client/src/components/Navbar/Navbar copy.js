@@ -1,13 +1,10 @@
-import { AppBar, Button, Toolbar, Typography, 
-    Avatar, Container, Box, List, ListItem, ListItemButton, ListItemText } from "@mui/material";
+import { AppBar, Button, Toolbar, Typography, Avatar } from "@mui/material";
 import CameraIcon from '@mui/icons-material/Camera';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 
 
 import useStyles from "./styles";
@@ -48,36 +45,43 @@ const Navbar = () => {
     }
 
     return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar color="inherit">
-        <Toolbar className={classes.toolbar}>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography  variant="h4" component={Link} to="/" sx={{ flexGrow: 1, textDecoration: "none", boxShadow: 'none' }}>
-            Memories
-          </Typography>
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-              {
+        // <ThemeProvider theme={defaultTheme}>
+        //     <CssBaseline />
+
+    //     <AppBar /*position="sticky"*/ sx={{ height: '70px', background: '#7F00FF'}}>
+    //     <Toolbar
+    //     className={classes.toolbar}>
+    //       <CameraIcon sx={{ mr: 3, fontSize: '50px' }} />
+    //       <Link to="/" className={classes.brandContainer}>
+    //             {/* <img src={img_memoriesText}   alt="icon" height="40px" title="memories" />      */}
+    //              <img component={Link} to="/" src={memoriesText} alt="icon" height="40px" />
+    //              {/* <img className={classes.image} src={memoriesLogo} alt="icon" height="40px" />      */}
+    //              {/* <Typography variant="h2">MEMORIES</Typography> */}
+    //          </Link>
+    //     </Toolbar>
+    //   </AppBar>
+    //  </ThemeProvider> 
+        <AppBar className={classes.appBar} position="static" color="inherit">
+            <Link to="/" className={classes.brandContainer}>
+                {/* <img src={img_memoriesText}   alt="icon" height="40px" title="memories" />     */}
+                <img component={Link} to="/" src={memoriesText} alt="icon" height="40px" />
+                <img className={classes.image} src={memoriesLogo} alt="icon" height="40px" />     
+            </Link>
+            <Toolbar className={classes.toolbar}>
+                {
                     user?
                     (
-                        <Button key={1} sx={{ color: 'black' }}>
-                            <Avatar  alt="" src={user?.data.picture}>
+                        <div className={classes.profile}>
+                            <Avatar className={classes.purple} alt="" src={user?.data.picture}>
                                 { user?.data.firstname.charAt(0) }
                             </Avatar>
-                            <Typography variant="h6">Hi there &nbsp;   <b>{user?.data.firstname}</b> ! </Typography>
+                            <Typography className={classes.userName} variant="h6">Hi there &nbsp;   <b>{user?.data.firstname}</b> ! </Typography>
                             
-                            <Button  variant="contained"
+                            <Button className={classes.logout} variant="contained"
                             color="secondary" onClick={handleLogout}>
                                 Logout
                             </Button>
-                        </Button>
+                        </div>
                     ):
                     (
                         <Button component={Link} to="/auth" variant="contained"
@@ -85,11 +89,9 @@ const Navbar = () => {
                             Sign In
                         </Button>
                     )
-                }   
-          </Box>
-        </Toolbar>
-      </AppBar>
-    </Box>
+                }                       
+            </Toolbar>
+        </AppBar>
     )
 }
 
