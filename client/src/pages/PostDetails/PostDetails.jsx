@@ -2,22 +2,38 @@ import { Paper, Typography, CircularProgress, Divider } from "@mui/material";
 import moment from "moment";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import useSWR from "swr";
+import { useEffect,useState } from "react";
 
 
 import useStyles from "./styles";
+import { usePostContext } from "../../useContext/usePostContext";
 
 const PostDetails = () => {
   const classes = useStyles();
   const navigate = useNavigate();
+  const location = useLocation();
+  const { posts } = usePostContext();
   const { id } = useParams();
+  const [recommendedPosts, setRecommendedPosts] = useState([]);
+  const post = location.state;
 
-  const url = `http://localhost:5000/posts/${id}`;
-  const fetcher = (url) => fetch(url).then((res) => res.json());
 
-  const { data: post, error, isLoading } = useSWR(url, fetcher);
+  // const url = `http://localhost:5000/posts/${id}`;
+  // const fetcher = (url) => fetch(url)
+  //   .then((res) => posts.filter(post => post._id !== res.json()._id));
 
-  if (error) return <p>Error loading data</p>;
-  if (isLoading) return <div>loading...</div>;
+  // const { data: recommendedPosts, error, isLoading } = useSWR(url, fetcher);
+
+  // if (error) return <p>Error loading data</p>;
+  // if (isLoading) return <div>loading...</div>;
+
+  useEffect(() => {
+    if(posts){
+      const newPosts = posts.filter(post => post._id !== id);
+      setRecommendedPosts(newPosts);
+    }
+    
+  }, [posts]);
 
   const handleClickOpenPost = (_id) => {
     navigate(`/posts/${_id}`);
@@ -47,7 +63,7 @@ const PostDetails = () => {
           <img className={classes.media} src={post.selectedFile || 'https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png'} alt={post.title} />
         </div>
         
-        {/* {recommendedPosts && (
+        {recommendedPosts && (
           <div className={classes.section}>
             <Typography gutterBottom variant="h5">You might also like:</Typography>
             <Divider/>
@@ -64,7 +80,7 @@ const PostDetails = () => {
 
             </div>
           </div>
-        )} */}
+        )}
       </div>
 
   )
